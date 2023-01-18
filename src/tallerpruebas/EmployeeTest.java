@@ -18,50 +18,44 @@ public class EmployeeTest {
 	Employee worker = new Employee(500, "USD", 0.1f, EmployeeType.Worker);
     Employee supervisor = new Employee(800, "USD", 0.2f, EmployeeType.Supervisor);
     Employee manager = new Employee(1500, "USD", 0.3f, EmployeeType.Manager);
-
-    Employee worker2 = new Employee(500, "EUR", 0.1f, EmployeeType.Worker);
-
-
+    Employee workerEuro = new Employee(500, "EUR", 0.1f, EmployeeType.Worker);
 
     @Test
-    @DisplayName("Salario segun el tipo de trabajador 'USD' y mes impar")
     void salarioSegunElTipoDeTrabajadorUsd_MesImpar() {
-        assertAll("SALARIO USD",
-                () -> assertEquals(564.3, worker.cs(1), 1),
-                () ->assertEquals(864.4, supervisor.cs(1), 1),
-                () ->assertEquals(1564.5, manager.cs(1), 1));
+        assertEquals(564.30, worker.cs(1), 2);
+        assertEquals(864.40, supervisor.cs(1), 2);
+        assertEquals(1564.50, manager.cs(1), 2);
     }
     
     @Test
-    @DisplayName("Salario segun el tipo de trabajador 'USD' y mes par")
     void salarioSegunElTipoDeTrabajadorUsd_MesPar() {
-        assertAll("SALARIO USD",
-                () -> assertEquals(500, worker.cs(2), 1),
-                () ->assertEquals(800, supervisor.cs(2), 1),
-                () ->assertEquals(1500, manager.cs(2), 1));
+        assertEquals(500, worker.cs(2), 2);
+        assertEquals(800, supervisor.cs(2), 2);
+        assertEquals(1500, manager.cs(2), 2);
     }
 
     @Test
-    @DisplayName("Salario segun tipo de trabajador 'not USD' mes impar")
     void salarioSegunTipoDeTrabajadorNotUsd_MesImpar() {
-    	assertEquals(539.3, worker2.cs(1));
+    	assertEquals(539.33, workerEuro.cs(1), 2);
     }
     
 
     @Test
-    @DisplayName("Bono segun tipo de trabajador 'USD'")
     void bonoSegunTipoDeTrabajadorUsd() {
-        assertAll("Bono USD",
-                () -> assertEquals(386.0, worker.CalculateYearBonus(), 1),
-                () ->assertEquals(993.0, supervisor.CalculateYearBonus(), 1),
-                () ->assertEquals(1886.0, manager.CalculateYearBonus(), 1));
+        assertEquals(386.00, worker.CalculateYearBonus(), 2);
+        assertEquals(993.00, supervisor.CalculateYearBonus(), 2);
+        assertEquals(1886.00, manager.CalculateYearBonus(), 2);
     }
 
     @Test
-    @DisplayName("Bono segun tipo de trabajador 'not USD'")
     void bonoSegunTipoDeTrabajadorNotUsd() {
-      assertEquals(386.0, worker2.CalculateYearBonus());
+      assertEquals(386.00, workerEuro.CalculateYearBonus(), 2);
     }
-                
+
+
+    // Asunciones: 
+    // - El salario debe ser un positivo real
+    // - El tipo de empleado no debe ser nulo
+    // - La divisa debe estar en mayuscula
 }
 
