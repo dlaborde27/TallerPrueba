@@ -1,4 +1,4 @@
-package tallerpruebas;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,6 +13,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import junit.framework.TestCase;
+import tallerpruebas.Employee;
+import tallerpruebas.EmployeeType;
 
 public class EmployeeTest {
 	Employee worker = new Employee(500, "USD", 0.1f, EmployeeType.Worker);
